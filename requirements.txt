@@ -1,0 +1,12 @@
+pydantic~=2.12.5
+fastapi~=0.135.3
+streamlit
+langchain
+langchain-community
+langchain-core
+langchain-openai
+sentence-transformers
+faiss-cpu
+pymupdf
+numpy
+python-dotenv

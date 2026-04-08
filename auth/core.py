@@ -43,12 +43,9 @@ def get_user(username: str) -> UserHashed | None:
 
 def authenticate_user(username:str, password:str):
     user = get_user(username)
-    print(f"User found: {user}")  # Check if user is fetched
     if not user:
         return False
-    print(f"Hashed password from DB: {user.hashed_password}")  # Check hash
     result = verify_password(password, user.hashed_password)
-    print(f"Password match: {result}")  # Check if verify works
     if not result:
         return False
     return user

@@ -15,13 +15,11 @@ from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-
-import os
 from dotenv import load_dotenv
-
 load_dotenv()
-PDF_PATH = os.getenv("PDF_PATH", "resources/docs.pdf")
-INDEX_PATH = os.getenv("INDEX_PATH", "resources/faiss_index")
+
+PDF_PATH = os.getenv("PDF_PATH")
+INDEX_PATH = os.getenv("INDEX_PATH")
 
 # Embedding Wrapper
 class MiniLMEmbeddings(Embeddings):

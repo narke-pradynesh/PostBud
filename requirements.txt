@@ -10,3 +10,4 @@ faiss-cpu
 pymupdf
 numpy
 python-dotenv
+passlib

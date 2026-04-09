@@ -8,7 +8,7 @@ from passlib.context import CryptContext
 
 from auth import Token
 from auth.core import authenticate_user, create_access_token, get_password_hash
-from model import Prompt, Response
+from models import Prompt, Response
 from rag import load_rag
 
 load_dotenv()

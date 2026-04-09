@@ -4,14 +4,13 @@ from database import get_db
 from auth import get_password_hash
 
 router = APIRouter(prefix="/users", tags=["users"])
-db = get_db()
 
-@router.post("/signup", response_model=UserHashed, status_code=status.HTTP_201_CREATED)
+@router.post("/signup", response_model=User, status_code=status.HTTP_201_CREATED)
 async def create_user(user_in: UserSignup):
-
-    existing_user = await db.users.find_one({
+    db = get_db()
+    existing_user = await db.Users.find_one({
         "$or" : [{"email": user_in.email},
-                 {user_in.email: user_in.email}]
+                 {"username": user_in.username}]
     })
 
     if existing_user:
@@ -30,7 +29,7 @@ async def create_user(user_in: UserSignup):
         disabled=user_in.disabled
     )
 
-    result = await db.users.insert_one(user.model_dump())
+    result = await db.Users.insert_one(user.model_dump())
     if not result.inserted_id:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,

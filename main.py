@@ -19,15 +19,15 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-app = FastAPI()
-app.include_router(user_router)
-chain = load_rag()
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await connect_db()
     yield
     await close_db()
+
+app = FastAPI(lifespan=lifespan)
+app.include_router(user_router)
+chain = load_rag()
 
 @app.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):

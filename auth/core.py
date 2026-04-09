@@ -7,7 +7,8 @@ from jose import jwt, JWTError
 from passlib.context import CryptContext
 from pymongo import MongoClient
 
-from auth import TokenData, UserHashed
+from auth import TokenData
+from models import UserHashed
 from dotenv import load_dotenv
 load_dotenv()
 

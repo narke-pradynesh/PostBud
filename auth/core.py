@@ -5,9 +5,7 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError
 from passlib.context import CryptContext
 from pymongo import MongoClient
-
-from auth import TokenData
-from models import UserHashed
+from models import UserHashed, TokenData
 from dotenv import load_dotenv
 load_dotenv()
 

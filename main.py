@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from passlib.context import CryptContext
-
 from auth import Token
-from auth.core import authenticate_user, create_access_token, get_password_hash
+from auth import authenticate_user, create_access_token
 from models import Prompt, Response
 from rag import load_rag
+from users import router as user_router
 
 load_dotenv()
 
@@ -21,6 +21,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 app = FastAPI()
+app.include_router(user_router)
 chain = load_rag()
 
 @asynccontextmanager

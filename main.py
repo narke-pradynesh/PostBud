@@ -5,12 +5,11 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from passlib.context import CryptContext
-from auth import Token
 from auth import authenticate_user, create_access_token
-from models import Prompt, Response
+from models import Prompt, Response, Token
 from rag import load_rag
 from users import router as user_router
-
+from contextlib import asynccontextmanager
 load_dotenv()
 
 SECRET_KEY=os.getenv("SECRET_KEY")

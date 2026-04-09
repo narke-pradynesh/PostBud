@@ -1,6 +1,6 @@
 from .prompt import Prompt
 from .response import Response
-from .user import User, UserHashed
+from .user import User, UserHashed, UserSignup
 from .token import Token, TokenData
 
-__all__ = ['Prompt', 'Response',  'User', 'UserHashed', 'Token', 'TokenData']
+__all__ = ['Prompt', 'Response',  'User', 'UserHashed', 'Token', 'TokenData','UserSignup']

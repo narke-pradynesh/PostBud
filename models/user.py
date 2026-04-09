@@ -8,3 +8,6 @@ class User(BaseModel):
 
 class UserHashed(User):
     hashed_password: str = None
+
+class UserSignup(User):
+    password: str

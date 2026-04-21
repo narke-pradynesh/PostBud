@@ -11,3 +11,4 @@ pymupdf
 numpy
 python-dotenv
 passlib
+sqlalchemy

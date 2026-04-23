@@ -1,3 +1,3 @@
-from .core import get_db, connect_db, close_db
+from .core import get_db, connect_db, close_db, engine
 
-__all__=['get_db', 'connect_db', 'close_db']
+__all__=['get_db', 'connect_db', 'close_db', 'engine']

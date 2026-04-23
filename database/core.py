@@ -11,7 +11,7 @@ engine : Engine | None = None
 async def connect_db():
     global engine
     engine = create_engine(DB_URL)
-    print(f"Connected to databsae")
+    print(f"Connected to database")
 
 async def close_db():
     global engine

@@ -1,7 +1,5 @@
-from typing import Any
-
 from pydantic import EmailStr, BaseModel
-from sqlmodel import Session, Field, SQLModel
+from sqlmodel import Field, SQLModel
 """
     Keep Pydantic models seperate from SQLModel models
 """

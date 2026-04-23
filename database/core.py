@@ -1,26 +1,24 @@
-from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
+from sqlmodel import create_engine
+from sqlalchemy.engine import Engine
+import models
 import os
 load_dotenv()
 
-MONGODB_URL = os.getenv("MONGODB_URL", "mongodb://localhost:27017")
-DB_NAME = os.getenv("DB_NAME", "PostBud")
-
-client: AsyncIOMotorClient | None = None
-db = None
+DB_URL :str = os.getenv("DB_URL", "")
+engine : Engine | None = None
 
 async def connect_db():
-    global client, db
-    client = AsyncIOMotorClient(MONGODB_URL)
-    db = client[DB_NAME]
-    print(f"Connected to MongoDB: {DB_NAME}")
+    global engine
+    engine = create_engine(DB_URL)
+    print(f"Connected to databsae")
 
 async def close_db():
-    global client
-    if client:
-        client.close()
-        print("MongoDB connection closed")
+    global engine
+    if engine:
+        engine.dispose(close=True)
+        print("Database connection closed")
 
 # Return active client
 def get_db():
-    return db
+    return engine
